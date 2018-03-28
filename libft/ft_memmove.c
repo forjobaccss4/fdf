@@ -1,24 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsarapin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/28 15:24:01 by vsarapin          #+#    #+#             */
-/*   Updated: 2018/03/28 15:24:05 by vsarapin         ###   ########.fr       */
+/*   Created: 2017/11/13 15:03:27 by vsarapin          #+#    #+#             */
+/*   Updated: 2017/11/20 16:43:10 by vsarapin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# include <stdlib.h>
-# include <unistd.h>
-# include <sys/stat.h>
-# include <sys/types.h>
-# include <string.h>
-# define BUFF_SIZE 10000000
+#include "libft.h"
 
-int		get_next_line(int const fd, char **line);
+void	*ft_memmove(void *dst, const void *src, size_t len)
+{
+	unsigned char	*d;
+	unsigned char	*s;
+	size_t			i;
 
-#endif
+	d = (unsigned char*)dst;
+	s = (unsigned char*)src;
+	i = 0;
+	if (d > s)
+		while (len)
+		{
+			d[len - 1] = s[len - 1];
+			len--;
+		}
+	else
+		while (i < len)
+		{
+			d[i] = s[i];
+			i++;
+		}
+	return (dst);
+}

@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsarapin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/28 15:24:01 by vsarapin          #+#    #+#             */
-/*   Updated: 2018/03/28 15:24:05 by vsarapin         ###   ########.fr       */
+/*   Created: 2017/11/08 11:38:10 by vsarapin          #+#    #+#             */
+/*   Updated: 2017/11/16 09:56:10 by vsarapin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# include <stdlib.h>
-# include <unistd.h>
-# include <sys/stat.h>
-# include <sys/types.h>
-# include <string.h>
-# define BUFF_SIZE 10000000
+#include "libft.h"
 
-int		get_next_line(int const fd, char **line);
+char	*ft_strnew(size_t size)
+{
+	char	*a;
 
-#endif
+	a = (char*)malloc(sizeof(char) * (size + 1));
+	if (a == NULL)
+		return (NULL);
+	ft_memset(a, '\0', size + 1);
+	return (a);
+}

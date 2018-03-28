@@ -5,47 +5,40 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsarapin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/24 11:30:18 by vsarapin          #+#    #+#             */
-/*   Updated: 2018/03/24 11:30:20 by vsarapin         ###   ########.fr       */
+/*   Created: 2018/03/28 15:20:52 by vsarapin          #+#    #+#             */
+/*   Updated: 2018/03/28 15:23:12 by vsarapin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
-# include <mlx.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <string.h>
-# include <fcntl.h>
-# include <math.h>
+# include "libft/libft.h"
 # include "get_next_line.h"
+# include <fcntl.h>
+# include <mlx.h>
+# include <math.h>
 
-typedef struct s_lst
+typedef	struct	s_lst
 {
-	void	*mlx_ptr;
-	void	*win_prt;
-
+	int			trigger;
+	int			**int_arr;
+	int			width;
+	int			height;
+	int			counter;
+	int			z;
+	int			x;
+	int			y;
+	int			next_x;
+	int			next_y;
+	void		*mlx_ptr;
+	void		*win_ptr;
 }				t_lst;
 
-#define roundf(x) floor(x + 0.5f)
-
-char			**ft_strsplit(char const*, char);
-char			*ft_strcpy(char*, const char*);
-int				ft_atoi(const char*);
-size_t			ft_strlen(const char*);
-int				key_hook_esc(int);
-int				exit_x(void*);
-char			**save_map(char*);
-char			**save_cycle(int, int, char*, char**);
-int				**coordinates(char**);
-int				len_d_arr(char**);
-char			**coordinates_in_one_line(char*);
-void			free_double_array(char**);
-int				len_of_map(char*);
-void			drow(char**, int**, t_lst*);
-void			drow_helper(int*, char**, t_lst*);
-int				main(int, char**);
-
-void line(t_lst*, int*, int, int);
+void			err_msg(char *str);
+void			free_d_arr(char **arr);
+void			free_structure(t_lst *lst);
+void			read_map(t_lst *lst, int fd);
+void			window_creator(t_lst *lst, char *smth);
+void			algo(t_lst *lst);
+void			line(t_lst *win, int *xyx1y1);
 #endif

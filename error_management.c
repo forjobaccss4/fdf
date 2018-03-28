@@ -1,24 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   error_management.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsarapin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/28 15:24:01 by vsarapin          #+#    #+#             */
-/*   Updated: 2018/03/28 15:24:05 by vsarapin         ###   ########.fr       */
+/*   Created: 2018/03/28 15:24:21 by vsarapin          #+#    #+#             */
+/*   Updated: 2018/03/28 15:24:22 by vsarapin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# include <stdlib.h>
-# include <unistd.h>
-# include <sys/stat.h>
-# include <sys/types.h>
-# include <string.h>
-# define BUFF_SIZE 10000000
+#include "fdf.h"
 
-int		get_next_line(int const fd, char **line);
+void		free_d_arr(char **str)
+{
+	int i;
 
-#endif
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
+}
+
+void		free_structure(t_lst *new)
+{
+	int i;
+
+	i = 0;
+	if (new->int_arr != NULL)
+		while (i < new->height)
+		{
+			free(new->int_arr[i]);
+			i++;
+		}
+	free(new);
+}
+
+void		err_msg(char *str)
+{
+	if (str == NULL)
+		return ;
+	write(2, str, ft_strlen(str));
+	exit(1);
+}

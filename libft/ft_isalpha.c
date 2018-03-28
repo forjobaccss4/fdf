@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsarapin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/28 15:24:01 by vsarapin          #+#    #+#             */
-/*   Updated: 2018/03/28 15:24:05 by vsarapin         ###   ########.fr       */
+/*   Created: 2017/11/23 10:54:59 by vsarapin          #+#    #+#             */
+/*   Updated: 2017/11/23 10:55:03 by vsarapin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# include <stdlib.h>
-# include <unistd.h>
-# include <sys/stat.h>
-# include <sys/types.h>
-# include <string.h>
-# define BUFF_SIZE 10000000
+#include "libft.h"
 
-int		get_next_line(int const fd, char **line);
+static int	ft_isupper(int c)
+{
+	if (c >= 'A' && c <= 'Z')
+		return (1);
+	return (0);
+}
 
-#endif
+static int	ft_islower(int c)
+{
+	if (c >= 'a' && c <= 'z')
+		return (1);
+	return (0);
+}
+
+int			ft_isalpha(int c)
+{
+	if (ft_islower(c) || ft_isupper(c))
+		return (1);
+	return (0);
+}

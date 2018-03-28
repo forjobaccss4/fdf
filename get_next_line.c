@@ -6,7 +6,7 @@
 /*   By: vsarapin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 18:33:24 by vsarapin          #+#    #+#             */
-/*   Updated: 2018/02/01 16:24:49 by vsarapin         ###   ########.fr       */
+/*   Updated: 2018/03/28 15:23:51 by vsarapin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,11 +106,14 @@ int		get_next_line(int const fd, char **line)
 	int				ret_value;
 
 	if (!line || (fd < 0 || fd >= 4864) || (read(fd, array_of_fd[fd], 0) < 0) \
-		|| !(buffer = (char *)malloc(sizeof(char) * BUFF_SIZE + 1)))
+		|| !(buffer = (char*)malloc(sizeof(char) * BUFF_SIZE + 1)))
 		return (-1);
 	if (array_of_fd[fd])
 		if (check_line(&array_of_fd[fd], line))
+		{
+			free(buffer);
 			return (1);
+		}
 	ret_value = read_from_file(fd, buffer, &array_of_fd[fd], line);
 	free(buffer);
 	if (ret_value != 0 || array_of_fd[fd] == NULL || array_of_fd[fd][0] == '\0')
