@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsarapin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/05 14:29:02 by vsarapin          #+#    #+#             */
-/*   Updated: 2017/11/13 16:41:13 by vsarapin         ###   ########.fr       */
+/*   Created: 2017/10/27 15:23:37 by vsarapin          #+#    #+#             */
+/*   Updated: 2017/11/19 14:29:08 by vsarapin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fdf.h"
 
-char	*ft_strncpy(char *dst, const char *src, size_t len)
+int	ft_isdigit(int c)
 {
-	int i;
-
-	i = 0;
-	while (i < (int)len && src[i])
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	while (i < (int)len)
-	{
-		dst[i] = '\0';
-		i++;
-	}
-	return (dst);
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }
