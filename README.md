@@ -11,4 +11,4 @@ For my mandatory part, I were allowed to use the following <b>functions</b>:
 <li> All the functions defined in the math library (-lm and man 3 math)</li>
 <li> All the functions defined in the miniLibX library.</li>
 
-![alt ](/img/mars)
+![alt ](/img/mars.png)
